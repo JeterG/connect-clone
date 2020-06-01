@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
   link: { textDecoration: "none", color: theme.palette.text.primary },
 }));
 
+// const setOpen = (open) => {React.useState(true);}
+
+const [open, setOpen] = React.useState(true);
+const handleClick = () => {
+  setOpen(!open);}
+
 const NavBar = () => {
   const classes = useStyles();
   return (
@@ -32,13 +38,40 @@ const NavBar = () => {
         >
           <List>
             <Link to="/" className={classes.link}>
+              <ListItem button onClick={handleClick}>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Dashboards"} />
+              </ListItem>
+            </Link>
+            <Link to="/" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary={"Home"} />
+                <ListItemText primary={"Activity Tracking"} />
               </ListItem>
             </Link>
+            <Link to="/" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Fitness"} />
+              </ListItem>
+            </Link>
+            <Link to="/" className={classes.link}>
+              <ListItem button>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Golf"} />
+              </ListItem>
+            </Link>
+
+          </List>
+          <List>
 
             <Link to="/about" className={classes.link}>
               <ListItem button>
