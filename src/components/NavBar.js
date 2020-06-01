@@ -12,20 +12,26 @@ import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import Collapse from "@material-ui/core/Collapse";
+
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: { width: "inherit" },
   link: { textDecoration: "none", color: theme.palette.text.primary },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
-
-// const setOpen = (open) => {React.useState(true);}
-
-const [open, setOpen] = React.useState(true);
-const handleClick = () => {
-  setOpen(!open);}
 
 const NavBar = () => {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
   return (
     <Router>
       <div style={{ display: "flex" }}>
@@ -43,18 +49,20 @@ const NavBar = () => {
                   <HomeIcon />
                 </ListItemIcon>
                 <ListItemText primary={"Dashboards"} />
+                {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </Link>
+            <Collapse in={open} timeout="auto" unmountOnExit>
             <Link to="/" className={classes.link}>
-              <ListItem button>
+              <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
                 <ListItemText primary={"Activity Tracking"} />
               </ListItem>
             </Link>
-            <Link to="/" className={classes.link}>
-              <ListItem button>
+            <Link to="/" className={classes.link} >
+              <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
@@ -62,17 +70,16 @@ const NavBar = () => {
               </ListItem>
             </Link>
             <Link to="/" className={classes.link}>
-              <ListItem button>
+              <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
                 <ListItemText primary={"Golf"} />
               </ListItem>
             </Link>
-
+            </Collapse>
           </List>
           <List>
-
             <Link to="/about" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
