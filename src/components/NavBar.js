@@ -18,7 +18,7 @@ import Collapse from "@material-ui/core/Collapse";
 
 
 const useStyles = makeStyles((theme) => ({
-  drawerPaper: { width: "inherit" },
+  drawerPaper: { width: "inherit" ,background:"grey"},
   link: { textDecoration: "none", color: theme.palette.text.primary },
   nested: {
     paddingLeft: theme.spacing(4),
@@ -69,14 +69,14 @@ const NavBar = () => {
                 <ListItemText primary={"Fitness"} />
               </ListItem>
             </Link>
-            <Link to="/" className={classes.link}>
+            {/* <Link to="/" className={classes.link}>
               <ListItem button className={classes.nested}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
                 <ListItemText primary={"Golf"} />
               </ListItem>
-            </Link>
+            </Link> */}
             </Collapse>
           </List>
           <List>
